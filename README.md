@@ -1,1 +1,1 @@
-# Modern-Programming-Technologies-LAB
+# Відслідковування потоку фроду на мережі мобільного оператора
