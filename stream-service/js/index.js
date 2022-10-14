@@ -1,18 +1,4 @@
-let Call = class {
-  constructor(outgoingNumber, incomingNumber, duration) {
-    this.outgoingNumber = outgoingNumber;
-    this.incomingNumber = incomingNumber;
-    this.duration = duration;
-  }
-};
 
-var calls = [
-  new Call('1', '1', '1s'),
-  new Call('1', '2', '1s'),
-  new Call('1', '3', '1s'),
-  new Call('1', '4', '1s'),
-  new Call('1', '5', '1s'),
-]
 
 var currentStream = -1
 var MAX_LIST_ITEMS = 200
@@ -53,7 +39,7 @@ function onStreamSelect (selectedStream) {
     switch (streams.stream[currentStream].id) {
       case 'callnetwork':
         for (let i = 0; i < calls.length; i++) {
-          setTimeout(addFormattedMessageCallNetwork,1000*(i+1), calls[i]);
+          setTimeout(publishMessage,1000*(i+1), calls[i]);
         }
         break
     }
