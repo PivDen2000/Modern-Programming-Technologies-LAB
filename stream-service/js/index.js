@@ -52,9 +52,12 @@ function addFormattedMessageCallNetwork(call) {
   var outputHtml = ''
   outputHtml +=
       "<b>Source: </b>Call Network <i class='fa-solid fa-phone fa-2xl' style='float:right'></i><br>"
-  outputHtml += '<b>Outgoing Number: </b>' + call.outgoingNumber + '<br>'
-  outputHtml += '<b>Incoming Number: </b>' + call.incomingNumber + '<br>'
-  outputHtml += '<b>Call duration: </b>' + call.duration + '<br>'
+  outputHtml += '<b>Outgoing Number: </b>' + call.numberA + '<br>'
+  outputHtml += '<b>Incoming Number: </b>' + call.numberB + '<br>'
+  outputHtml += '<b>Tariff: </b>' + call.tariff + '<br>'
+  outputHtml += '<b>Event type: </b>' + call.eventType + '<br>'
+  outputHtml += '<b>Call start: </b>' + call.callStart + '<br>'
+
   li.innerHTML = outputHtml
 
   var list = document.getElementById('messageList')

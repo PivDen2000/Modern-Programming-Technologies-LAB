@@ -1,15 +1,4 @@
-
-var Call = class {
-    constructor(tariff, eventType, callStart, numberA, numberB) {
-        this.numberA = numberA;
-        this.numberB = numberB;
-        this.tariff = tariff;
-        this.eventType = eventType;
-        this.callStart = callStart;
-    }
-};
-
-let file =
+let file = "Phone number;Tariff;Event type;Call_start;Number_A;Number_B\n" +
     "380669224054;Super Pro;in call;01JUL2022:15:22:30;380957363536;380669224054\n" +
     "380991601495;Unlim;in call;05JUL2022:09:04:31;380505311788;380991601495\n" +
     "380995188177;Unlim;in call;05JUL2022:16:38:52;380500140801;380995188177\n" +
@@ -1352,33 +1341,3 @@ let file =
     "380668896586;Size XS;in call;01OCT2022:18:08:36;380660241290;380668896586\n" +
     "380950985100;Super Light;in call;01OCT2022:18:09:22;380508482939;380950985100\n" +
     "380950985100;Super Light;in call;01OCT2022:18:13:07;380508482939;380950985100\n"
-
-var calls = []
-var callData = file.split('\n')
-for (const call of callData) {
-    let el = call.split(';')
-    calls.push(new Call(el[1],el[2],el[3],el[4],el[5]))
-}
-
-var pubnub = new PubNub({
-    publishKey: "pub-c-51abb275-6762-4347-88c1-c08d9576245d",
-    subscribeKey: "sub-c-432cf4b1-cc85-4fd3-916f-3ed99fb9bf67",
-    uuid: "sec-c-ZTk4YjJhZGYtMWZiZC00Yzc3LWJmODUtN2RjODFkZTcwNDNi"
-});
-
-const publishMessage = async (message) => {
-    await pubnub.publish({
-        channel: "callnetwork",
-        message: message,
-    });
-}
-
-pubnub.addListener({
-    message: function (m){
-        addFormattedMessageCallNetwork(m.message)
-    }
-});
-
-pubnub.subscribe({
-    channels: ["callnetwork"],
-});
