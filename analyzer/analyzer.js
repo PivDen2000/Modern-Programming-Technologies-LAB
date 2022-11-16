@@ -1,1 +1,0 @@
-//tut detal'nui analiz susDatabase nomeriv
